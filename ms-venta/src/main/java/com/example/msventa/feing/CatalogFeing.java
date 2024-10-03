@@ -1,21 +1,17 @@
 package com.example.msventa.feing;
 
 
+import com.example.msventa.dto.ProductDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
 @FeignClient(name = "ms-catalog-service", path = "/product")
-public class CatalogFeing {
+public interface CatalogFeing {
     @GetMapping("/{id}")
-    @CircuitBreaker(name = "productListByIdCB", fallbackMethod = "productListById")
-    public ResponseEntity<ProductDto> getById(@PathVariable Integer id);
-    default ResponseEntity<ProductDto> productListById(Integer id, Exception e) {
-        return ResponseEntity.ok(new ProductDto());
-    }
+    public ResponseEntity<ProductDto> getById(@PathVariable(required = true) Integer id);
+
 }
 
 

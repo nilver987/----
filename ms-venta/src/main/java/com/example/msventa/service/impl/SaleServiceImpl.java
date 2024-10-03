@@ -2,10 +2,12 @@ package com.example.msventa.service.impl;
 
 
 import com.example.msventa.entity.Sale;
+import com.example.msventa.feing.CatalogFeing;
 import com.example.msventa.repository.SaleRepository;
 import com.example.msventa.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class SaleServiceImpl implements SaleService{
     @Autowired
     private SaleRepository saleRepository;
+    @Autowired
+    private CatalogFeing catalogFeing;
 
     @Override
     public List<Sale> list() {
