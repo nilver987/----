@@ -19,6 +19,6 @@ public class Sale {
     @JoinColumn(name = "sale_id")
     private List<SaleDetail> saleDetails;
     @Transient
-    private ClientDto clientDto;
+    private ClientDto client;
 }
 
