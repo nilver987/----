@@ -18,7 +18,5 @@ public class Sale {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "sale_id")
     private List<SaleDetail> saleDetails;
-    @Transient
-    private ClientDto client;
 }
 

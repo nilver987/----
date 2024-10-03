@@ -31,15 +31,12 @@ public class SaleServiceImpl implements SaleService{
 
     @Override
     public Optional<Sale> findById(Integer id) {
-        Optional<Sale> order = saleRepository.findById(id);
-        order.get().setClientDto(clientFeign.getById(order.get().getClientId()).getBody());
-
-        order.get().getSaleDetails().forEach(orderDetail -> {
-            orderDetail.setProductDto(productFeign.getById(orderDetail.getProductId()).getBody());
-        });
-        return order;
-
-
+        
+        Optional<Sale> sale = saleRepository.findById(id);
+        for (SaleDetail saleDetail : sale.get().getSaleDetails()) {
+            saleDetail.setProductDto(productFeign.getById(saleDetail.getProductId()).getBody());
+        }
+        return saleRepository.findById(id);
     }
 
     @Override
