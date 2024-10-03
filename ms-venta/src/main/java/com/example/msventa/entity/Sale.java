@@ -15,7 +15,7 @@ public class Sale {
     private Integer ClientId;
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
-    private List<SaleDetail> orderDetails;
+    @JoinColumn(name = "sale_id")
+    private List<SaleDetail> saleDetails;
 }
 
