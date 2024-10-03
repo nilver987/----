@@ -31,3 +31,9 @@ spring:
           uri: lb://ms-provider-service
           predicates:
             - Path=/provider/**
+
+
+        - id: ms-venta-service
+          uri: lb://ms-venta-service
+          predicates:
+            - Path=/sale/**
