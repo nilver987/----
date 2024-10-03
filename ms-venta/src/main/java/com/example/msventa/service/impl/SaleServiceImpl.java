@@ -3,7 +3,7 @@ package com.example.msventa.service.impl;
 
 import com.example.msventa.entity.Sale;
 import com.example.msventa.entity.SaleDetail;
-import com.example.msventa.feing.ProductFeing;
+import com.example.msventa.feign.ProductFeign;
 import com.example.msventa.repository.SaleRepository;
 import com.example.msventa.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class SaleServiceImpl implements SaleService{
     private SaleRepository saleRepository;
 
     @Autowired
-    private ProductFeing productFeing;
+    private ProductFeign productFeign;
 
     @Override
     public List<Sale> list() {
@@ -30,7 +30,7 @@ public class SaleServiceImpl implements SaleService{
     public Optional<Sale> findById(Integer id) {
         Optional<Sale> sale = saleRepository.findById(id);
         for (SaleDetail saleDetail : sale.get().getSaleDetails()) {
-            saleDetail.setProductDto(productFeing.getById(saleDetail.getProductId()).getBody());
+            saleDetail.setProductDto(productFeign.getById(saleDetail.getProductId()).getBody());
         }
         return saleRepository.findById(id);
     }
