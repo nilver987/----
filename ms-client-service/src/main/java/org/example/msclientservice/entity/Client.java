@@ -13,7 +13,10 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String documentNumber;
-    private Boolean state;
+    private String apellido_paterno;
+    private String apellido_materno;
+    private String DNI;
+    private String telefono;
+    private String direccion;
 
 }

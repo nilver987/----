@@ -15,5 +15,5 @@ public class ProductDto {
     private String marca;
     private String description;
     private String precio;
-    private CategoryDto categoryDto;
+    private CategoryDto category;
 }
