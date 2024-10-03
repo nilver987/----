@@ -13,6 +13,8 @@ public class Sale {
     private Integer id;
     private String number;
     private Integer ClientId;
+    private Integer CategoryId;
+    private Integer ProductId;
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "sale_id")
