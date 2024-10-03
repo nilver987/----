@@ -36,8 +36,8 @@ public class SaleServiceImpl implements SaleService{
     }
 
     @Override
-    public Sale save(Sale category) {
-        return saleRepository.save(category);
+    public Sale save(Sale sale) {
+        return saleRepository.save(sale);
     }
 
     @Override

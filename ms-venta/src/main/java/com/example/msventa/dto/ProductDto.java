@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 public class ProductDto {
     private Integer id;
-    private String name;
+    private String nombre;
+    private String tipo;
     private String marca;
-    private String description;
     private String precio;
     private CategoryDto category;
 }

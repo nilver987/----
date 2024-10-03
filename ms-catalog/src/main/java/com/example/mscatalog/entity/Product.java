@@ -12,9 +12,9 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    private String nombre;
+    private String tipo;
     private String marca;
-    private String description;
     private String precio;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
