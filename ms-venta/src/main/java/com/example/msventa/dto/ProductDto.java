@@ -1,10 +1,6 @@
 package com.example.msventa.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 
@@ -15,5 +11,5 @@ public class ProductDto {
     private String tipo;
     private String marca;
     private String precio;
-    private CategoryDto category;
+    private ClientDto category;
 }
