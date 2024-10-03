@@ -30,7 +30,7 @@ public class SaleController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Sale> update(@PathVariable Integer id,
-                                        @RequestBody Sale sale) {
+                                           @RequestBody Sale sale) {
         sale.setId(id);
         return ResponseEntity.ok(saleService.save(sale));
     }
