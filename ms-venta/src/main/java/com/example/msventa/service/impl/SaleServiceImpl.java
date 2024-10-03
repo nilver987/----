@@ -3,6 +3,7 @@ package com.example.msventa.service.impl;
 
 import com.example.msventa.entity.Sale;
 import com.example.msventa.entity.SaleDetail;
+import com.example.msventa.feign.ClientFeign;
 import com.example.msventa.feign.ProductFeign;
 import com.example.msventa.repository.SaleRepository;
 import com.example.msventa.service.SaleService;
@@ -20,6 +21,8 @@ public class SaleServiceImpl implements SaleService{
 
     @Autowired
     private ProductFeign productFeign;
+    @Autowired
+    private ClientFeign clientFeign;
 
     @Override
     public List<Sale> list() {
@@ -28,11 +31,15 @@ public class SaleServiceImpl implements SaleService{
 
     @Override
     public Optional<Sale> findById(Integer id) {
-        Optional<Sale> sale = saleRepository.findById(id);
-        for (SaleDetail saleDetail : sale.get().getSaleDetails()) {
-            saleDetail.setProductDto(productFeign.getById(saleDetail.getProductId()).getBody());
-        }
-        return saleRepository.findById(id);
+        Optional<Sale> order = saleRepository.findById(id);
+        order.get().setClientDto(clientFeign.getById(order.get().getClientId()).getBody());
+
+        order.get().getSaleDetails().forEach(orderDetail -> {
+            orderDetail.setProductDto(productFeign.getById(orderDetail.getProductId()).getBody());
+        });
+        return order;
+
+
     }
 
     @Override
