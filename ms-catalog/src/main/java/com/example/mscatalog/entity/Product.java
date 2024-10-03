@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
+
 
 @Entity
 @Data
@@ -15,7 +15,7 @@ public class Product {
     private String name;
     private String marca;
     private String description;
-    private BigDecimal precio;
+    private String precio;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
