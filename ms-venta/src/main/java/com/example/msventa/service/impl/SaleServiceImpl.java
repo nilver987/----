@@ -2,6 +2,7 @@ package com.example.msventa.service.impl;
 
 
 import com.example.msventa.entity.Sale;
+import com.example.msventa.entity.SaleDetail;
 import com.example.msventa.feing.ProductFeing;
 import com.example.msventa.repository.SaleRepository;
 import com.example.msventa.service.SaleService;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class SaleServiceImpl implements SaleService{
     @Autowired
     private SaleRepository saleRepository;
+
     @Autowired
     private ProductFeing productFeing;
 
@@ -26,6 +28,10 @@ public class SaleServiceImpl implements SaleService{
 
     @Override
     public Optional<Sale> findById(Integer id) {
+        Optional<Sale> sale = saleRepository.findById(id);
+        for (SaleDetail saleDetail : sale.get().getSaleDetails()) {
+            saleDetail.setProductDto(productFeing.getById(saleDetail.getProductId()).getBody());
+        }
         return saleRepository.findById(id);
     }
 

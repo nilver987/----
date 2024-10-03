@@ -1,9 +1,11 @@
 package com.example.msventa.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
-
-import java.math.BigDecimal;
 
 
 @Data
@@ -13,5 +15,5 @@ public class ProductDto {
     private String marca;
     private String description;
     private String precio;
-    private CategoryDto  categoryDto;
+    private CategoryDto categoryDto;
 }
